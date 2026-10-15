@@ -1,0 +1,21 @@
+<data inherit_id="binaural_product_catalog.style_6">
+    <xpath expr="//div[@class='card-catalog__specifications']" position="inside">
+        <!-- Instancia del registro del producto -->
+        <t t-set="prod" t-value="env['product.product'].browse(o.get('id'))" />
+
+        <!-- 2. Referencia alterna -->
+        <p class="helvetica-bold" t-if="'alternate_code' in prod._fields and prod.alternate_code">
+            ALTERNO: <span t-esc="prod.alternate_code" />
+        </p>
+
+        <!-- 3. Cantidad por bulto -->
+        <p class="helvetica-bold" t-if="'qty_package' in prod._fields and prod.qty_package">
+            Cantidad / Bulto: <span t-esc="prod.qty_package" />
+        </p>
+
+        <!-- 4. Cantidad por caja -->
+        <p class="helvetica-bold" t-if="'qty_box' in prod._fields and prod.qty_box">
+            Cantidad / Caja: <span t-esc="prod.qty_box" />
+        </p>
+    </xpath>
+</data>
